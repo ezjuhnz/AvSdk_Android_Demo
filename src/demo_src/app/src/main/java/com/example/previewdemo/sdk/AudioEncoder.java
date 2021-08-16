@@ -190,6 +190,7 @@ public class AudioEncoder {
             if (outputBufferIndex == MediaCodec.INFO_OUTPUT_FORMAT_CHANGED){
                 LogUtil.d(TAG, "hello Audio===INFO_OUTPUT_FORMAT_CHANGED===");
                 newformat = mAudioEnc.getOutputFormat(); // API >= 16
+
                 mAudioEncCallback.onMediaFormat(Constants.TRACK_AUDIO, newformat);
             }
             while (outputBufferIndex >= 0) { //>= 0
@@ -405,14 +406,6 @@ public class AudioEncoder {
         return count;
     }
 
-    public static class RawAudioData{
-        byte[] data;
-        long pts;
-        public RawAudioData(byte[] data, long pts){
-            this.data = data;
-            this.pts = pts;
-        }
-    }
 }
 
 

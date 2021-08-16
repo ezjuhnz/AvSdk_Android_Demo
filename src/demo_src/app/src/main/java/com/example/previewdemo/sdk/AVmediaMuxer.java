@@ -63,7 +63,7 @@ public class AVmediaMuxer {
         handler = new Handler(looper){
             public void handleMessage(Message msg){
                 LogUtil.d(TAG,"hello get msg from some where");
-                if(!isStarted) return;
+                if(!isStarted) return; //如果混合器还没启动,则不能进行下一步操作
                 MuxerData muxerData;
                 switch (msg.what){
                     case AUDIO_TRACK:
@@ -153,9 +153,9 @@ public class AVmediaMuxer {
             Message msg = handler.obtainMessage(MUXER_END, "mux end flag");
             handler.sendMessage(msg);
         }
-        while(isStarted){
-
-        }
+//        while(isStarted){
+//
+//        }
     }
 
     /**
